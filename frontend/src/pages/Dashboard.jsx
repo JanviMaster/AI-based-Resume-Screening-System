@@ -1,15 +1,16 @@
-import { useEffect } from "react";
-import API from "../services/api";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
+  return (
+    <div>
+      <h1>Resume Screening System 🚀</h1>
 
-  useEffect(() => {
-    API.get("/")
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
-  }, []);
-
-  return <h2>Admin Dashboard</h2>;
+      <Link to="/upload-resume">Upload Resume</Link>
+      <br />
+      <Link to="/upload-jd">Upload Job Description</Link>
+    </div>
+  );
 }
 
 export default Dashboard;
