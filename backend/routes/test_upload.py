@@ -7,7 +7,6 @@ app = FastAPI()
 async def test_upload(file: UploadFile = File(...)):
 
     try:
-        # Read file
         content = await file.read()
 
         return {

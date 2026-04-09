@@ -2,9 +2,7 @@ import re
 from services.resume_parser import extract_skills, preprocess_text
 
 
-# =====================================
 # EXTRACT EXPERIENCE FROM JD
-# =====================================
 
 def extract_required_experience(job_description):
     """
@@ -20,9 +18,7 @@ def extract_required_experience(job_description):
     return 0
 
 
-# =====================================
 # EXTRACT JOB ROLE (OPTIONAL)
-# =====================================
 
 def extract_job_role(job_description):
     """
@@ -45,9 +41,7 @@ def extract_job_role(job_description):
     return "General"
 
 
-# =====================================
 # EXTRACT KEYWORDS
-# =====================================
 
 def extract_keywords(job_description):
     """
@@ -58,9 +52,7 @@ def extract_keywords(job_description):
     return list(set(processed.split()))
 
 
-# =====================================
 # MAIN JD PARSER
-# =====================================
 
 def parse_job_description(job_description):
 

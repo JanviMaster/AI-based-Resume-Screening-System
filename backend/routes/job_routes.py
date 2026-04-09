@@ -8,7 +8,6 @@ router = APIRouter()
 @router.post("/match-resume")
 async def match_resume(job_description: str):
 
-    # Fetch resumes
     resumes = list(resume_collection.find())
 
     print("JD:", job_description)
@@ -18,19 +17,16 @@ async def match_resume(job_description: str):
     seen_emails = set()  
     for resume in resumes:
 
-        # Skip invalid resumes
         name = resume.get("name", "Unknown")
         email = resume.get("email")
 
         if not name or name.lower() in ["unknown", "borivali", "kandivali"]:
             continue
 
-        # Remove duplicates using email
         if email in seen_emails:
             continue
         seen_emails.add(email)
 
-        # Calculate score
         score_data = calculate_final_score(resume, job_description)
 
         results.append({
@@ -38,7 +34,6 @@ async def match_resume(job_description: str):
             "scores": score_data
         })
 
-    # Sort by final score
     results.sort(
         key=lambda x: x["scores"]["final_score"],
         reverse=True

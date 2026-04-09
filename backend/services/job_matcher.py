@@ -4,7 +4,7 @@ from services.resume_parser import preprocess_text, extract_skills
 nlp = spacy.load("en_core_web_sm")
 
 
-# SKILL MATCHING (IMPROVED)
+# SKILL MATCHING 
 
 def calculate_skill_match(resume_skills, job_description):
     """
@@ -32,9 +32,7 @@ def calculate_skill_match(resume_skills, job_description):
     return (len(matched_skills) / len(job_skills)) * 100
 
 
-# =====================================
-# TEXT SIMILARITY (IMPROVED SAFE VERSION)
-# =====================================
+# TEXT SIMILARITY 
 
 def calculate_text_similarity(resume_text, job_description):
     """
@@ -55,9 +53,7 @@ def calculate_text_similarity(resume_text, job_description):
     return doc1.similarity(doc2) * 100
 
 
-# =====================================
 # KEYWORD OVERLAP (FALLBACK 🔥)
-# =====================================
 
 def keyword_overlap_score(text1, text2):
     words1 = set(text1.split())
@@ -71,9 +67,7 @@ def keyword_overlap_score(text1, text2):
     return (len(common) / len(words2)) * 100
 
 
-# =====================================
 # EXPERIENCE SCORING (IMPROVED)
-# =====================================
 
 def calculate_experience_score(resume_experience, job_description):
     """
@@ -100,9 +94,7 @@ def calculate_experience_score(resume_experience, job_description):
         return (resume_experience / required_exp) * 100
 
 
-# =====================================
 # FINAL AI SCORE (SMART WEIGHTING)
-# =====================================
 
 def calculate_final_score(resume, job_description):
 
